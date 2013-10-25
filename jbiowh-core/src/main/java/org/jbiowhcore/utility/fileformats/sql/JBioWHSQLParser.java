@@ -88,7 +88,7 @@ public class JBioWHSQLParser {
             StringBuilder text = new StringBuilder();
             while ((line = reader.readLine()) != null) {
                 if (!line.startsWith("--")) {
-                    text.append(line);
+                    text.append(line).append(" ");
                 }
             }
             for (String sentence : text.toString().split(";")) {

@@ -203,21 +203,21 @@ public class Group {
 
     public List<Protein> getProtein() {
         if (protein == null) {
-            protein = new ArrayList<>();
+            protein = new ArrayList();
         }
         return protein;
     }
 
     public List<Group> getGroup() {
         if (group == null) {
-            group = new ArrayList<>();
+            group = new ArrayList();
         }
         return group;
     }
 
     public List<Note> getNote() {
         if (note == null) {
-            note = new ArrayList<>();
+            note = new ArrayList();
         }
         return note;
     }

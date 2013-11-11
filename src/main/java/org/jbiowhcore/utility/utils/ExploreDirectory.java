@@ -45,7 +45,7 @@ public class ExploreDirectory {
      * @return a List of File objects with the files into the directory
      */
     public List<File> extractFilesPathFromDir(File dir) {
-        LinkedList<File> files = new LinkedList<>();
+        LinkedList<File> files = new LinkedList();
 
         if (dir.isDirectory()) {
             for (String name : dir.list()) {
@@ -75,7 +75,7 @@ public class ExploreDirectory {
      * @return a List of File objects with the files into the directory
      */
     public List<File> extractFilesPathFromDir(File dir, String[] extensions) {
-        LinkedList<File> files = new LinkedList<>();
+        LinkedList<File> files = new LinkedList();
 
         if (dir.isDirectory()) {
             for (String name : dir.list()) {
@@ -111,7 +111,7 @@ public class ExploreDirectory {
      * @return a List of File objects with the files into the directory
      */
     public List<File> extractFilesPathFromDir(File dir, String[] extensions, int varDepth) {
-        LinkedList<File> files = new LinkedList<>();
+        LinkedList<File> files = new LinkedList();
         if (depth == -1) {
             depth = varDepth;
             varDepth = 0;

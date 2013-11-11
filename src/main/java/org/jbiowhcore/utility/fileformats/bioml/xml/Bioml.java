@@ -33,7 +33,7 @@ public class Bioml {
 
     public List<Group> getGroup() {
         if (group == null) {
-            group = new ArrayList<>();
+            group = new ArrayList();
         }
         return this.group;
     }

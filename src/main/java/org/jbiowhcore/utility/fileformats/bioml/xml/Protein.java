@@ -158,7 +158,7 @@ public class Protein {
 
     public List<Note> getNote() {
         if (note == null) {
-            note = new ArrayList<>();
+            note = new ArrayList();
         }
         return note;
     }
@@ -169,7 +169,7 @@ public class Protein {
 
     public List<Peptide> getPeptide() {
         if (peptide == null) {
-            peptide = new ArrayList<>();
+            peptide = new ArrayList();
         }
         return peptide;
     }

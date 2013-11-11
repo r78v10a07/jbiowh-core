@@ -79,7 +79,7 @@ public class ReadLinesToList {
      */
     public List<String> readLinesToList(BufferedReader idReader) throws IOException {
         String line;
-        List<String> ids = new ArrayList<>();
+        List<String> ids = new ArrayList();
         while ((line = idReader.readLine()) != null) {
             ids.add(line.trim());
         }

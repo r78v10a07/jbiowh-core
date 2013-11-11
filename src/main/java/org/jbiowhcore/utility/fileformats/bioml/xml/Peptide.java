@@ -149,7 +149,7 @@ public class Peptide {
 
     public List<Ddomain> getDomain() {
         if (domain == null){
-            domain = new ArrayList<>();
+            domain = new ArrayList();
         }
         return domain;
     }
@@ -160,7 +160,7 @@ public class Peptide {
 
     public List<Aa> getAa() {
         if (aa == null) {
-            aa = new ArrayList<>();
+            aa = new ArrayList();
         }
         return aa;
     }

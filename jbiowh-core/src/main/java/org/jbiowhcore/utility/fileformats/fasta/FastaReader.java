@@ -23,7 +23,7 @@ public class FastaReader {
      * Create the fasta reader object
      */
     public FastaReader() {
-        data = new ArrayList<>();
+        data = new ArrayList();
     }
 
     /**

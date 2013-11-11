@@ -44,18 +44,16 @@ public class JBioWHSQLParser {
      * @return a list of SQL sentences
      */
     public List<String> getAllSQL(File f) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(f))) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(f));
             return getAllSQL(reader);
         } catch (FileNotFoundException ex) {
             VerbLogger.getInstance().setLevel(VerbLogger.getInstance().ERROR);
             VerbLogger.getInstance().log(this.getClass(), ex.getMessage());
-        } catch (IOException ex) {
-            VerbLogger.getInstance().setLevel(VerbLogger.getInstance().ERROR);
-            VerbLogger.getInstance().log(this.getClass(), ex.getMessage());
         }
-        return new ArrayList<>();
+        return new ArrayList();
     }
-    
+
     /**
      * Get all SQL sentences
      *
@@ -63,16 +61,8 @@ public class JBioWHSQLParser {
      * @return a list of SQL sentences
      */
     public List<String> getAllSQL(InputStream in) {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
-            return getAllSQL(reader);
-        } catch (FileNotFoundException ex) {
-            VerbLogger.getInstance().setLevel(VerbLogger.getInstance().ERROR);
-            VerbLogger.getInstance().log(this.getClass(), ex.getMessage());
-        } catch (IOException ex) {
-            VerbLogger.getInstance().setLevel(VerbLogger.getInstance().ERROR);
-            VerbLogger.getInstance().log(this.getClass(), ex.getMessage());
-        }
-        return new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+        return getAllSQL(reader);
     }
 
     /**
@@ -83,7 +73,7 @@ public class JBioWHSQLParser {
      */
     public List<String> getAllSQL(BufferedReader reader) {
         String line;
-        List<String> sentences = new ArrayList<>();
+        List<String> sentences = new ArrayList();
         try {
             StringBuilder text = new StringBuilder();
             while ((line = reader.readLine()) != null) {

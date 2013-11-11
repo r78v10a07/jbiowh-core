@@ -289,7 +289,7 @@ public class Ddomain {
 
     public List<Aa> getAa() {
         if (aa == null) {
-            aa = new ArrayList<>();
+            aa = new ArrayList();
         }
         return aa;
     }

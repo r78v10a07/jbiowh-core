@@ -25,7 +25,7 @@ public class FastaEntry {
      */
     public FastaEntry() {
         seqLength = 80;
-        ids = new HashMap<>();
+        ids = new HashMap();
     }
 
     /**
@@ -35,7 +35,7 @@ public class FastaEntry {
      */
     public FastaEntry(int seqLength) {
         this.seqLength = seqLength;
-        ids = new HashMap<>();
+        ids = new HashMap();
     }
 
     /**
@@ -46,7 +46,7 @@ public class FastaEntry {
     public FastaEntry(String header) {
         seqLength = 80;
         this.header = header;
-        ids = new HashMap<>();
+        ids = new HashMap();
     }
 
     /**
@@ -58,7 +58,7 @@ public class FastaEntry {
     public FastaEntry(String header, int seqLength) {
         this.seqLength = seqLength;
         this.header = header;
-        ids = new HashMap<>();
+        ids = new HashMap();
     }
 
     /**

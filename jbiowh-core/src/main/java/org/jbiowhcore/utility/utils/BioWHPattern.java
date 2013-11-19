@@ -115,7 +115,7 @@ public class BioWHPattern {
         if (s == null) {
             return false;
         }
-        return s.matches("GO:.*");
+        return s.matches("(GO|go):.*");
     }
 
     /**

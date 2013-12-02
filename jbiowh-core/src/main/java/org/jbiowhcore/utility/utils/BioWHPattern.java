@@ -141,7 +141,7 @@ public class BioWHPattern {
         if (s == null) {
             return false;
         }
-        return s.matches("\\d*\\.(\\d*|\\-)\\.(\\d*|\\-)\\.(\\d*|\\-)");
+        return s.matches("\\d*\\.(\\d*|\\-|%)\\.(\\d*|\\-|%)\\.(\\d*|\\-|%)");
     }
 
     /**

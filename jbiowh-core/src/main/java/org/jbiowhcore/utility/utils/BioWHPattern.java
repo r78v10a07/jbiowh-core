@@ -37,7 +37,7 @@ public class BioWHPattern {
         if (s == null) {
             return false;
         }
-        return s.matches("\\d+\\-\\d+\\-\\d+");
+        return s.matches("(\\d*%*\\d*)\\-*(\\d*%*\\d*)\\-*(\\d*%*\\d*)");
     }
 
     /**
@@ -50,7 +50,7 @@ public class BioWHPattern {
         if (s == null) {
             return false;
         }
-        return s.matches("DB\\d{5}");
+        return s.matches("DB\\d*%*\\d*");
     }
 
     /**
@@ -141,7 +141,7 @@ public class BioWHPattern {
         if (s == null) {
             return false;
         }
-        return s.matches("\\d*\\.(\\d*|\\-|%)\\.(\\d*|\\-|%)\\.(\\d*|\\-|%)");
+        return s.matches("\\d*\\.(\\-*\\d*%*\\d*)\\.(\\-*\\d*%*\\d*)\\.(\\-*\\d*%*\\d*)");
     }
 
     /**
@@ -154,7 +154,7 @@ public class BioWHPattern {
         if (s == null) {
             return false;
         }
-        return s.matches("\\d*");
+        return s.matches("\\d+");
     }
 
     /**

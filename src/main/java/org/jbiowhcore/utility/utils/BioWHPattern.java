@@ -130,6 +130,19 @@ public class BioWHPattern {
         }
         return s.matches(".*_.*");
     }
+    
+    /**
+     * Returns true if this string is PIRSF Name type
+     *
+     * @param s The string to be analyzed
+     * @return true if the string is Protein Name type
+     */
+    public boolean isPirsfID(String s) {
+        if (s == null) {
+            return false;
+        }
+        return s.matches("PIRSF\\d+%*\\d*");
+    }
 
     /**
      * Returns true if this string is EC type

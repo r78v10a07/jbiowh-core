@@ -15,6 +15,7 @@ import org.jbiowhcore.logger.VerbLogger;
  *
  * $Author: r78v10a07@gmail.com $ $LastChangedDate: 2013-03-19 09:38:47 +0100
  * (Tue, 19 Mar 2013) $ $LastChangedRevision: 591 $
+ *
  * @since Jun 15, 2011
  */
 public class ParseFiles {
@@ -100,7 +101,11 @@ public class ParseFiles {
      */
     public void printOnTSVFile(String keyval, String data, String end) {
         if (data != null) {
-            ((PrintWriter) filesmap.get(keyval)).print(data.trim().replace('\n', ' ').replace("\\", "\\\\") + end);
+            if (!data.trim().isEmpty()) {
+                ((PrintWriter) filesmap.get(keyval)).print(data.trim().replace('\n', ' ').replace("\\", "\\\\") + end);
+            }else{
+                ((PrintWriter) filesmap.get(keyval)).print("\\N" + end);
+            }
         } else {
             ((PrintWriter) filesmap.get(keyval)).print("\\N" + end);
         }

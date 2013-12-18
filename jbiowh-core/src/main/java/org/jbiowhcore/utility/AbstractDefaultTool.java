@@ -6,7 +6,6 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
-import org.jbiowhcore.basic.JBioWHUserData;
 import org.jbiowhcore.logger.VerbLogger;
 
 /**
@@ -69,7 +68,7 @@ public abstract class AbstractDefaultTool {
      * @param toPrint string to be printed
      */
     protected void println(String toPrint) {
-        //System.out.println(toPrint);
+        System.out.println(toPrint);
         file.println(toPrint);
     }
 

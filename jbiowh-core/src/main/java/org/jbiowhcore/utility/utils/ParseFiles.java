@@ -3,6 +3,8 @@ package org.jbiowhcore.utility.utils;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -119,6 +121,36 @@ public class ParseFiles {
      * @param end String separator or end line
      */
     public void printOnTSVFile(String keyval, Integer data, String end) {
+        if (data != null) {
+            ((PrintWriter) filesmap.get(keyval)).print(data + end);
+        } else {
+            ((PrintWriter) filesmap.get(keyval)).print("\\N" + end);
+        }
+    }
+    
+    /**
+     * Print on TSV file
+     *
+     * @param keyval table name
+     * @param data bigInteger to print
+     * @param end String separator or end line
+     */
+    public void printOnTSVFile(String keyval, BigInteger data, String end) {
+        if (data != null) {
+            ((PrintWriter) filesmap.get(keyval)).print(data + end);
+        } else {
+            ((PrintWriter) filesmap.get(keyval)).print("\\N" + end);
+        }
+    }
+    
+    /**
+     * Print on TSV file
+     *
+     * @param keyval table name
+     * @param data bigInteger to print
+     * @param end String separator or end line
+     */
+    public void printOnTSVFile(String keyval, BigDecimal data, String end) {
         if (data != null) {
             ((PrintWriter) filesmap.get(keyval)).print(data + end);
         } else {

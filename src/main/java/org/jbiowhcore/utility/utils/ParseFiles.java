@@ -2,6 +2,9 @@ package org.jbiowhcore.utility.utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -10,6 +13,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.zip.GZIPInputStream;
 import org.jbiowhcore.logger.VerbLogger;
 
 /**
@@ -105,7 +109,7 @@ public class ParseFiles {
         if (data != null) {
             if (!data.trim().isEmpty()) {
                 ((PrintWriter) filesmap.get(keyval)).print(data.trim().replace('\n', ' ').replace("\\", "\\\\") + end);
-            }else{
+            } else {
                 ((PrintWriter) filesmap.get(keyval)).print("\\N" + end);
             }
         } else {
@@ -127,7 +131,7 @@ public class ParseFiles {
             ((PrintWriter) filesmap.get(keyval)).print("\\N" + end);
         }
     }
-    
+
     /**
      * Print on TSV file
      *
@@ -142,7 +146,7 @@ public class ParseFiles {
             ((PrintWriter) filesmap.get(keyval)).print("\\N" + end);
         }
     }
-    
+
     /**
      * Print on TSV file
      *
@@ -202,6 +206,118 @@ public class ParseFiles {
      */
     public void setTempdirectory(String tempdirectory) {
         this.tempdirectory = tempdirectory;
+    }
+
+    /**
+     * Uncompress the src Gzip file to the output stream
+     *
+     * @param src the Gzip stream
+     * @param dest the output stream
+     */
+    public void copy(GZIPInputStream src, FileOutputStream dest) {
+
+        try {
+            byte[] buffer = new byte[1024];
+            int noOfBytes = 0;
+
+            while ((noOfBytes = src.read(buffer)) != -1) {
+                dest.write(buffer, 0, noOfBytes);
+            }
+        } catch (IOException ex) {
+            VerbLogger.getInstance().log(this.getClass(), ex.getMessage());
+            System.exit(-1);
+        }
+    }
+
+    /**
+     * Uncompress the src Gzip file to the output stream
+     *
+     * @param src the Gzip stream
+     * @param dest the output stream
+     */
+    public void copy(InputStream src, FileOutputStream dest) {
+
+        try {
+            byte[] buffer = new byte[1024];
+            int noOfBytes = 0;
+
+            while ((noOfBytes = src.read(buffer)) != -1) {
+                dest.write(buffer, 0, noOfBytes);
+            }
+        } catch (IOException ex) {
+            VerbLogger.getInstance().log(this.getClass(), ex.getMessage());
+            System.exit(-1);
+        }
+    }
+
+    /**
+     * Copy the stream file to a new created file. Both files are closed
+     *
+     * @param src the input stream file
+     * @param dest the output file name
+     */
+    public void copyAndCloseGzip(InputStream src, String dest) {
+        GZIPInputStream fis = null;
+        FileOutputStream fos = null;
+
+        try {
+            fis = new GZIPInputStream(src);
+            fos = new FileOutputStream(dest);
+
+            copy(fis, fos);
+        } catch (FileNotFoundException ex) {
+            VerbLogger.getInstance().log(this.getClass(), ex.getMessage());
+            System.exit(-1);
+        } catch (IOException ex) {
+            VerbLogger.getInstance().log(this.getClass(), ex.getMessage());
+            System.exit(-1);
+        } finally {
+            try {
+                if (fis != null) {
+                    fis.close();
+                }
+                if (fos != null) {
+                    fos.close();
+                }
+            } catch (IOException ex) {
+                VerbLogger.getInstance().log(this.getClass(), ex.getMessage());
+                System.exit(-1);
+            }
+        }
+    }
+    
+    /**
+     * Copy the stream file to a new created file. Both files are closed
+     *
+     * @param src the input stream file
+     * @param dest the output file name
+     */
+    public void copyAndClose(InputStream src, String dest) {
+        FileOutputStream fos = null;
+
+        try {
+            fos = new FileOutputStream(dest);
+
+            copy(src, fos);
+        } catch (FileNotFoundException ex) {
+            VerbLogger.getInstance().log(this.getClass(), ex.getMessage());
+            System.exit(-1);
+        } catch (IOException ex) {
+            VerbLogger.getInstance().log(this.getClass(), ex.getMessage());
+            System.exit(-1);
+        } finally {
+            try {
+                if (src != null) {
+                    src.close();
+                }
+                if (fos != null) {
+                    fos.close();
+                }
+            } catch (IOException ex) {
+                VerbLogger.getInstance().log(this.getClass(), ex.getMessage());
+                System.exit(-1);
+            }
+        }
     }
 
     /**

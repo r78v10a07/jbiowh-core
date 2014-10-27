@@ -108,7 +108,7 @@ public class ParseFiles {
     public void printOnTSVFile(String keyval, String data, String end) {
         if (data != null) {
             if (!data.trim().isEmpty()) {
-                ((PrintWriter) filesmap.get(keyval)).print(data.trim().replace('\n', ' ').replace("\\", "\\\\") + end);
+                ((PrintWriter) filesmap.get(keyval)).print(data.trim().replace('\t', ' ').replace('\n', ' ').replace("\\", "\\\\") + end);
             } else {
                 ((PrintWriter) filesmap.get(keyval)).print("\\N" + end);
             }

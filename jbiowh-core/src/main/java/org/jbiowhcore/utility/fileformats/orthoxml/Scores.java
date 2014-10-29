@@ -72,7 +72,7 @@ public class Scores {
      */
     public List<ScoreDef> getScoreDef() {
         if (scoreDef == null) {
-            scoreDef = new ArrayList<ScoreDef>();
+            scoreDef = new ArrayList<>();
         }
         return this.scoreDef;
     }

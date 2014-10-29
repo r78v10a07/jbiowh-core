@@ -197,7 +197,7 @@ public class Peptide {
      */
     public List<Modification> getModificationItem() {
         if (modificationItem == null) {
-            modificationItem = new ArrayList<Modification>();
+            modificationItem = new ArrayList<>();
         }
         return this.modificationItem;
     }
@@ -226,7 +226,7 @@ public class Peptide {
      */
     public List<FragmentIonType> getFragmentIon() {
         if (fragmentIon == null) {
-            fragmentIon = new ArrayList<FragmentIonType>();
+            fragmentIon = new ArrayList<>();
         }
         return this.fragmentIon;
     }

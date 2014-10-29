@@ -51,7 +51,7 @@ public class IterationHits {
      */
     public List<Hit> getHit() {
         if (hit == null) {
-            hit = new ArrayList<Hit>();
+            hit = new ArrayList<>();
         }
         return this.hit;
     }

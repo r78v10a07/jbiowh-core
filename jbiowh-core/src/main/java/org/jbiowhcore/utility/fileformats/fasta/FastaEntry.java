@@ -70,8 +70,8 @@ public class FastaEntry {
 
         if (header.matches(".*\\u0001.*")) {
             String[] first = header.split("\\u0001");
-            for (int j = 0; j < first.length; j++) {
-                addIds(first[j], delimiter);
+            for (String first1 : first) {
+                addIds(first1, delimiter);
             }
         } else {
             addIds(header, delimiter);
@@ -83,7 +83,7 @@ public class FastaEntry {
         int size = aIds.length;
 
         if (size % 2 != 0) {
-            size = size - 1;
+            size -= 1;
         }
         for (int i = 0; i < size - 1; i += 2) {
             if (ids.containsKey(aIds[i])) {

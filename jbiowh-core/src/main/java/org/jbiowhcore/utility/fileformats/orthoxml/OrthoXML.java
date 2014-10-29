@@ -115,7 +115,7 @@ public class OrthoXML {
      */
     public List<Species> getSpecies() {
         if (species == null) {
-            species = new ArrayList<Species>();
+            species = new ArrayList<>();
         }
         return this.species;
     }

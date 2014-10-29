@@ -22,9 +22,6 @@ public class JBioWHSQLParser {
 
     private static JBioWHSQLParser singleton;
 
-    private JBioWHSQLParser() {
-    }
-
     /**
      * Return a JBioWHSQLParser instance
      *
@@ -35,6 +32,9 @@ public class JBioWHSQLParser {
             singleton = new JBioWHSQLParser();
         }
         return singleton;
+    }
+
+    private JBioWHSQLParser() {
     }
 
     /**

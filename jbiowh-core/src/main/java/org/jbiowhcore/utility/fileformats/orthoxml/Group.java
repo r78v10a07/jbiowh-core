@@ -99,7 +99,7 @@ public class Group {
      */
     public List<Score> getScore() {
         if (score == null) {
-            score = new ArrayList<Score>();
+            score = new ArrayList<>();
         }
         return this.score;
     }
@@ -128,7 +128,7 @@ public class Group {
      */
     public List<Property> getProperty() {
         if (property == null) {
-            property = new ArrayList<Property>();
+            property = new ArrayList<>();
         }
         return this.property;
     }
@@ -159,7 +159,7 @@ public class Group {
      */
     public List<JAXBElement<?>> getGeneRefOrParalogGroupOrOrthologGroup() {
         if (geneRefOrParalogGroupOrOrthologGroup == null) {
-            geneRefOrParalogGroupOrOrthologGroup = new ArrayList<JAXBElement<?>>();
+            geneRefOrParalogGroupOrOrthologGroup = new ArrayList<>();
         }
         return this.geneRefOrParalogGroupOrOrthologGroup;
     }

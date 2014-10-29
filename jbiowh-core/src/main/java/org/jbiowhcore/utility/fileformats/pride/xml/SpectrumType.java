@@ -126,7 +126,7 @@ public class SpectrumType {
      */
     public List<SupDescType> getSupDesc() {
         if (supDesc == null) {
-            supDesc = new ArrayList<SupDescType>();
+            supDesc = new ArrayList<>();
         }
         return this.supDesc;
     }
@@ -204,7 +204,7 @@ public class SpectrumType {
      */
     public List<Object> getSupDataArrayBinaryOrSupDataArray() {
         if (supDataArrayBinaryOrSupDataArray == null) {
-            supDataArrayBinaryOrSupDataArray = new ArrayList<Object>();
+            supDataArrayBinaryOrSupDataArray = new ArrayList<>();
         }
         return this.supDataArrayBinaryOrSupDataArray;
     }

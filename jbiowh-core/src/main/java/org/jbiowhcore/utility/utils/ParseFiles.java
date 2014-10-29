@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 import java.util.zip.GZIPInputStream;
 import org.jbiowhcore.logger.VerbLogger;
 
@@ -26,13 +25,7 @@ import org.jbiowhcore.logger.VerbLogger;
  */
 public class ParseFiles {
 
-    private String tempdirectory;
-    private Map filesmap;
-    private Collection fileStream;
     private static ParseFiles singleton;
-
-    private ParseFiles() {
-    }
 
     /**
      * Return a ParseFiles
@@ -44,6 +37,13 @@ public class ParseFiles {
             singleton = new ParseFiles();
         }
         return singleton;
+    }
+
+    private String tempdirectory;
+    private Map<String, PrintWriter> filesmap;
+    private Collection<File> fileStream;
+
+    private ParseFiles() {
     }
 
     /**
@@ -73,8 +73,8 @@ public class ParseFiles {
      */
     public void closeAllPrintWriter() {
         VerbLogger.getInstance().log(this.getClass(), "Closing temporal files");
-        for (String name : (Set<String>) filesmap.keySet()) {
-            ((PrintWriter) filesmap.get(name)).close();
+        for (String name : filesmap.keySet()) {
+            filesmap.get(name).close();
         }
     }
 
@@ -95,7 +95,7 @@ public class ParseFiles {
      * @return the PrintWriter object for the named file
      */
     public PrintWriter getPrintWriterFromName(String name) {
-        return (PrintWriter) filesmap.get(name);
+        return filesmap.get(name);
     }
 
     /**
@@ -108,12 +108,12 @@ public class ParseFiles {
     public void printOnTSVFile(String keyval, String data, String end) {
         if (data != null) {
             if (!data.trim().isEmpty()) {
-                ((PrintWriter) filesmap.get(keyval)).print(data.trim().replace('\t', ' ').replace('\n', ' ').replace("\\", "\\\\") + end);
+                filesmap.get(keyval).print(data.trim().replace('\t', ' ').replace('\n', ' ').replace("\\", "\\\\") + end);
             } else {
-                ((PrintWriter) filesmap.get(keyval)).print("\\N" + end);
+                filesmap.get(keyval).print("\\N" + end);
             }
         } else {
-            ((PrintWriter) filesmap.get(keyval)).print("\\N" + end);
+            filesmap.get(keyval).print("\\N" + end);
         }
     }
 
@@ -126,9 +126,9 @@ public class ParseFiles {
      */
     public void printOnTSVFile(String keyval, Integer data, String end) {
         if (data != null) {
-            ((PrintWriter) filesmap.get(keyval)).print(data + end);
+            filesmap.get(keyval).print(data + end);
         } else {
-            ((PrintWriter) filesmap.get(keyval)).print("\\N" + end);
+            filesmap.get(keyval).print("\\N" + end);
         }
     }
 
@@ -141,9 +141,9 @@ public class ParseFiles {
      */
     public void printOnTSVFile(String keyval, BigInteger data, String end) {
         if (data != null) {
-            ((PrintWriter) filesmap.get(keyval)).print(data + end);
+            filesmap.get(keyval).print(data + end);
         } else {
-            ((PrintWriter) filesmap.get(keyval)).print("\\N" + end);
+            filesmap.get(keyval).print("\\N" + end);
         }
     }
 
@@ -156,9 +156,9 @@ public class ParseFiles {
      */
     public void printOnTSVFile(String keyval, BigDecimal data, String end) {
         if (data != null) {
-            ((PrintWriter) filesmap.get(keyval)).print(data + end);
+            filesmap.get(keyval).print(data + end);
         } else {
-            ((PrintWriter) filesmap.get(keyval)).print("\\N" + end);
+            filesmap.get(keyval).print("\\N" + end);
         }
     }
 
@@ -171,9 +171,9 @@ public class ParseFiles {
      */
     public void printOnTSVFile(String keyval, boolean data, String end) {
         if (data) {
-            ((PrintWriter) filesmap.get(keyval)).print("1" + end);
+            filesmap.get(keyval).print("1" + end);
         } else {
-            ((PrintWriter) filesmap.get(keyval)).print("0" + end);
+            filesmap.get(keyval).print("0" + end);
         }
     }
 
@@ -186,14 +186,14 @@ public class ParseFiles {
      */
     public void printOnTSVFile(String keyval, Long data, String end) {
         if (data != null) {
-            ((PrintWriter) filesmap.get(keyval)).print(data + end);
+            filesmap.get(keyval).print(data + end);
         } else {
-            ((PrintWriter) filesmap.get(keyval)).print("\\N" + end);
+            filesmap.get(keyval).print("\\N" + end);
         }
     }
 
     private void deleteAllFile() {
-        for (File f : (Collection<File>) fileStream) {
+        for (File f : fileStream) {
             VerbLogger.getInstance().log(this.getClass(), "Deleting file: " + f.getName());
             f.delete();
         }
@@ -217,8 +217,8 @@ public class ParseFiles {
     public void copy(GZIPInputStream src, FileOutputStream dest) {
 
         try {
-            byte[] buffer = new byte[1024];
-            int noOfBytes = 0;
+            byte[] buffer = new byte[1_024];
+            int noOfBytes;
 
             while ((noOfBytes = src.read(buffer)) != -1) {
                 dest.write(buffer, 0, noOfBytes);
@@ -238,8 +238,8 @@ public class ParseFiles {
     public void copy(InputStream src, FileOutputStream dest) {
 
         try {
-            byte[] buffer = new byte[1024];
-            int noOfBytes = 0;
+            byte[] buffer = new byte[1_024];
+            int noOfBytes;
 
             while ((noOfBytes = src.read(buffer)) != -1) {
                 dest.write(buffer, 0, noOfBytes);
@@ -285,7 +285,7 @@ public class ParseFiles {
             }
         }
     }
-    
+
     /**
      * Copy the stream file to a new created file. Both files are closed
      *
@@ -300,9 +300,6 @@ public class ParseFiles {
 
             copy(src, fos);
         } catch (FileNotFoundException ex) {
-            VerbLogger.getInstance().log(this.getClass(), ex.getMessage());
-            System.exit(-1);
-        } catch (IOException ex) {
             VerbLogger.getInstance().log(this.getClass(), ex.getMessage());
             System.exit(-1);
         } finally {
@@ -325,12 +322,12 @@ public class ParseFiles {
      *
      * @param filesNames Array list with the tables name
      */
-    private void createfilesMap(Collection filesNames) {
-        filesmap = new HashMap();
-        fileStream = new ArrayList();
+    private void createfilesMap(Collection<String> filesNames) {
+        filesmap = new HashMap<>();
+        fileStream = new ArrayList<>();
 
         try {
-            for (String name : (Collection<String>) filesNames) {
+            for (String name : filesNames) {
                 File infile = new File(tempdirectory + name + ".tsv");
                 VerbLogger.getInstance().log(this.getClass(), "Creating file: " + infile.getName());
                 fileStream.add(infile);
@@ -342,4 +339,5 @@ public class ParseFiles {
             VerbLogger.getInstance().setLevel(VerbLogger.getInstance().getInitialLevel());
         }
     }
+
 }

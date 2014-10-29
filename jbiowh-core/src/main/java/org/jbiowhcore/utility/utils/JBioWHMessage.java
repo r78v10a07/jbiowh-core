@@ -8,13 +8,7 @@ package org.jbiowhcore.utility.utils;
  * @since Jan 3, 2014
  */
 public class JBioWHMessage {
-
-    private String message;
-    private Integer value;
     private static JBioWHMessage singleton;
-
-    private JBioWHMessage() {
-    }
 
     /**
      * Return a JBioWHMessage instance
@@ -26,6 +20,12 @@ public class JBioWHMessage {
             singleton = new JBioWHMessage();
         }
         return singleton;
+    }
+
+    private String message;
+    private Integer value;
+
+    private JBioWHMessage() {
     }
 
     public String getMessage() {
@@ -47,4 +47,5 @@ public class JBioWHMessage {
     public void increaseValue() {
         value++;
     }
+
 }

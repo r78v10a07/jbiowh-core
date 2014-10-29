@@ -73,7 +73,7 @@ public class Groups {
      */
     public List<Group> getOrthologGroup() {
         if (orthologGroup == null) {
-            orthologGroup = new ArrayList<Group>();
+            orthologGroup = new ArrayList<>();
         }
         return this.orthologGroup;
     }

@@ -83,7 +83,7 @@ public class ParamType {
      */
     public List<Object> getCvParamOrUserParam() {
         if (cvParamOrUserParam == null) {
-            cvParamOrUserParam = new ArrayList<Object>();
+            cvParamOrUserParam = new ArrayList<>();
         }
         return this.cvParamOrUserParam;
     }

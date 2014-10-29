@@ -152,7 +152,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://orthoXML.org/2011/", name = "orthologGroup", scope = Group.class)
     public JAXBElement<Group> createGroupOrthologGroup(Group value) {
-        return new JAXBElement<Group>(_GroupOrthologGroup_QNAME, Group.class, Group.class, value);
+        return new JAXBElement<>(_GroupOrthologGroup_QNAME, Group.class, Group.class, value);
     }
 
     /**
@@ -161,7 +161,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://orthoXML.org/2011/", name = "paralogGroup", scope = Group.class)
     public JAXBElement<Group> createGroupParalogGroup(Group value) {
-        return new JAXBElement<Group>(_GroupParalogGroup_QNAME, Group.class, Group.class, value);
+        return new JAXBElement<>(_GroupParalogGroup_QNAME, Group.class, Group.class, value);
     }
 
     /**
@@ -170,7 +170,7 @@ public class ObjectFactory {
      */
     @XmlElementDecl(namespace = "http://orthoXML.org/2011/", name = "geneRef", scope = Group.class)
     public JAXBElement<GeneRef> createGroupGeneRef(GeneRef value) {
-        return new JAXBElement<GeneRef>(_GroupGeneRef_QNAME, GeneRef.class, Group.class, value);
+        return new JAXBElement<>(_GroupGeneRef_QNAME, GeneRef.class, Group.class, value);
     }
 
 }

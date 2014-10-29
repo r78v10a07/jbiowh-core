@@ -12,9 +12,6 @@ public class BioWHPattern {
 
     private static BioWHPattern singleton;
 
-    private BioWHPattern() {
-    }
-
     /**
      * Return a BioWHPattern
      *
@@ -25,6 +22,9 @@ public class BioWHPattern {
             singleton = new BioWHPattern();
         }
         return singleton;
+    }
+
+    private BioWHPattern() {
     }
 
     /**

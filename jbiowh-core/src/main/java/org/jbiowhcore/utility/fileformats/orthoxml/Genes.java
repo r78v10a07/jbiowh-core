@@ -72,7 +72,7 @@ public class Genes {
      */
     public List<Gene> getGene() {
         if (gene == null) {
-            gene = new ArrayList<Gene>();
+            gene = new ArrayList<>();
         }
         return this.gene;
     }

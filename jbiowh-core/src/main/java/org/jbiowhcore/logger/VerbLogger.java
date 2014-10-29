@@ -14,29 +14,7 @@ import org.slf4j.LoggerFactory;
 public class VerbLogger {
 
     private static final transient Logger logger = LoggerFactory.getLogger(VerbLogger.class);
-    /**
-     * This is the info message information level
-     */
-    public final int INFO = 1;
-    /**
-     * This is the debug message information level
-     */
-    public final int DEBUG = 2;
-    /**
-     * This is the error message information level
-     */
-    public final int ERROR = 3;
-    /**
-     * This is the error message information level
-     */
-    public final int NONE = 0;
-    private int level = 0;
-    private int initialLevel = 0;
-    private PrintStream output = System.out;
     private static VerbLogger singleton;
-
-    private VerbLogger() {
-    }
 
     /**
      * Return a VerbLogger
@@ -56,6 +34,28 @@ public class VerbLogger {
      */
     public static Logger getLogger() {
         return logger;
+    }
+    /**
+     * This is the info message information level
+     */
+    public final int INFO = 1;
+    /**
+     * This is the debug message information level
+     */
+    public final int DEBUG = 2;
+    /**
+     * This is the error message information level
+     */
+    public final int ERROR = 3;
+    /**
+     * This is the error message information level
+     */
+    public final int NONE = 0;
+    private int level = 0;
+    private int initialLevel = 0;
+    private PrintStream output = System.out;
+
+    private VerbLogger() {
     }
 
     /**
@@ -161,4 +161,5 @@ public class VerbLogger {
     public int getInitialLevel() {
         return initialLevel;
     }
+
 }

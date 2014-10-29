@@ -15,9 +15,6 @@ public class BioWHTime {
 
     private static BioWHTime singleton;
 
-    private BioWHTime() {
-    }
-
     /**
      * Return a BioWHTime
      *
@@ -28,6 +25,9 @@ public class BioWHTime {
             singleton = new BioWHTime();
         }
         return singleton;
+    }
+
+    private BioWHTime() {
     }
 
     public String currentTime() {

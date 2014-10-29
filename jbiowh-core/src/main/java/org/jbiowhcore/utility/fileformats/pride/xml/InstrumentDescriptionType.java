@@ -255,7 +255,7 @@ public class InstrumentDescriptionType {
          */
         public List<ParamType> getAnalyzer() {
             if (analyzer == null) {
-                analyzer = new ArrayList<ParamType>();
+                analyzer = new ArrayList<>();
             }
             return this.analyzer;
         }

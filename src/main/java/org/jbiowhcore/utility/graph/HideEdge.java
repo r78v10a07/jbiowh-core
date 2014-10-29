@@ -17,4 +17,9 @@ public class HideEdge extends DefaultEdge{
         return "";
     }
 
+    @Override
+    public Object clone() {
+        return super.clone(); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

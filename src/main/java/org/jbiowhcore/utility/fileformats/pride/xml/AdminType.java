@@ -158,7 +158,7 @@ public class AdminType {
      */
     public List<PersonType> getContact() {
         if (contact == null) {
-            contact = new ArrayList<PersonType>();
+            contact = new ArrayList<>();
         }
         return this.contact;
     }

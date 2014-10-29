@@ -23,9 +23,21 @@ public class ReadLinesToList {
 
     private static ReadLinesToList singleton;
 
-    private ReadLinesToList() {
+    /**
+     * Return a ReadLinesToList instance
+     *
+     * @return a ReadLinesToList instance
+     */
+    public static synchronized ReadLinesToList getInstance() {
+        if (singleton == null) {
+            singleton = new ReadLinesToList();
+        }
+        return singleton;
     }
     
+    private ReadLinesToList(){
+    }
+
     /**
      * Create a string matrix with the fields on the file
      * @param fileNameToRead the file name to read
@@ -33,7 +45,7 @@ public class ReadLinesToList {
      * @return a string matrix with the fields on the file
      * @throws IOException
      */
-    public List<List<String>> readLinesToList(String fileNameToRead, String regex)throws IOException{
+    public List<List<String>> readLinesToList(String fileNameToRead, String regex) throws IOException {
         List<List<String>> linesInField = new ArrayList();
         List<String> lines = readLinesToList(new BufferedReader(new FileReader(new File(fileNameToRead))));
         for(String line : lines){
@@ -42,7 +54,7 @@ public class ReadLinesToList {
                 fields.add(field.trim());
             }
             if (!fields.isEmpty()){
-               linesInField.add(fields); 
+                linesInField.add(fields); 
             }
         }
         return linesInField;
@@ -84,17 +96,5 @@ public class ReadLinesToList {
             ids.add(line.trim());
         }
         return ids;
-    }
-
-    /**
-     * Return a ReadLinesToList instance
-     *
-     * @return a ReadLinesToList instance
-     */
-    public static synchronized ReadLinesToList getInstance() {
-        if (singleton == null) {
-            singleton = new ReadLinesToList();
-        }
-        return singleton;
     }
 }

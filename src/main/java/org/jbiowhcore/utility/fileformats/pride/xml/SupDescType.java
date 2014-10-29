@@ -99,7 +99,7 @@ public class SupDescType {
      */
     public List<SourceFileType> getSupSourceFile() {
         if (supSourceFile == null) {
-            supSourceFile = new ArrayList<SourceFileType>();
+            supSourceFile = new ArrayList<>();
         }
         return this.supSourceFile;
     }

@@ -85,7 +85,7 @@ public class Species {
      */
     public List<Database> getDatabase() {
         if (database == null) {
-            database = new ArrayList<Database>();
+            database = new ArrayList<>();
         }
         return this.database;
     }

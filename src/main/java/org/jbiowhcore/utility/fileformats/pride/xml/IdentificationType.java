@@ -249,7 +249,7 @@ public abstract class IdentificationType {
      */
     public List<Peptide> getPeptideItem() {
         if (peptideItem == null) {
-            peptideItem = new ArrayList<Peptide>();
+            peptideItem = new ArrayList<>();
         }
         return this.peptideItem;
     }

@@ -16,15 +16,6 @@ import org.jbiowhcore.logger.VerbLogger;
 public class ExploreDirectory {
 
     private static ExploreDirectory singleton;
-    
-    /**
-     * The recursivity depth limit
-     */
-    private int depth;
-
-    private ExploreDirectory() {
-        depth = -1;
-    }
 
     /**
      * Return a ExploreDirectory
@@ -36,6 +27,15 @@ public class ExploreDirectory {
             singleton = new ExploreDirectory();
         }
         return singleton;
+    }
+    
+    /**
+     * The recursivity depth limit
+     */
+    private int depth;
+
+    private ExploreDirectory() {
+        depth = -1;
     }
 
     /**
@@ -142,4 +142,5 @@ public class ExploreDirectory {
         }
         return files;
     }
+
 }

@@ -72,7 +72,7 @@ public class FastaReader {
             } else if (fasta != null) {
                 builder.append(line);
             }
-            reader.mark(9000000);
+            reader.mark(9_000_000);
         }
         if (fasta != null && !builder.toString().isEmpty()) {
             fasta.setSeq(builder.toString());

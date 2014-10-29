@@ -82,7 +82,7 @@ public class GeneRef {
      */
     public List<Score> getScore() {
         if (score == null) {
-            score = new ArrayList<Score>();
+            score = new ArrayList<>();
         }
         return this.score;
     }

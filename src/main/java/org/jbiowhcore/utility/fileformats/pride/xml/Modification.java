@@ -200,7 +200,7 @@ public class Modification {
      */
     public List<String> getModMonoDelta() {
         if (modMonoDelta == null) {
-            modMonoDelta = new ArrayList<String>();
+            modMonoDelta = new ArrayList<>();
         }
         return this.modMonoDelta;
     }
@@ -229,7 +229,7 @@ public class Modification {
      */
     public List<String> getModAvgDelta() {
         if (modAvgDelta == null) {
-            modAvgDelta = new ArrayList<String>();
+            modAvgDelta = new ArrayList<>();
         }
         return this.modAvgDelta;
     }

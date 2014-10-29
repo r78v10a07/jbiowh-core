@@ -32,4 +32,9 @@ public class HideWeightedEdge extends DefaultWeightedEdge {
     public String toString() {
         return "";
     }
+
+    @Override
+    public Object clone() {
+        return super.clone(); //To change body of generated methods, choose Tools | Templates.
+    }
 }

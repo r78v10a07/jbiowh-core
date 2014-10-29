@@ -47,7 +47,7 @@ public class JPLConstrains {
             if (((Collection) constrains.get(index)).isEmpty()) {
                 return constrains.get(index);
             } else {
-                return ((Collection) constrains.get(index)).iterator().next();
+                return ((Iterable) constrains.get(index)).iterator().next();
             }
         }
         return constrains.get(index);

@@ -219,7 +219,7 @@ public class ExperimentType {
      */
     public List<ReferenceType> getReference() {
         if (reference == null) {
-            reference = new ArrayList<ReferenceType>();
+            reference = new ArrayList<>();
         }
         return this.reference;
     }
@@ -320,7 +320,7 @@ public class ExperimentType {
      */
     public List<GelFreeIdentificationType> getGelFreeIdentification() {
         if (gelFreeIdentification == null) {
-            gelFreeIdentification = new ArrayList<GelFreeIdentificationType>();
+            gelFreeIdentification = new ArrayList<>();
         }
         return this.gelFreeIdentification;
     }
@@ -349,7 +349,7 @@ public class ExperimentType {
      */
     public List<TwoDimensionalIdentificationType> getTwoDimensionalIdentification() {
         if (twoDimensionalIdentification == null) {
-            twoDimensionalIdentification = new ArrayList<TwoDimensionalIdentificationType>();
+            twoDimensionalIdentification = new ArrayList<>();
         }
         return this.twoDimensionalIdentification;
     }
@@ -474,7 +474,7 @@ public class ExperimentType {
          */
         public List<CvLookupType> getCvLookup() {
             if (cvLookup == null) {
-                cvLookup = new ArrayList<CvLookupType>();
+                cvLookup = new ArrayList<>();
             }
             return this.cvLookup;
         }
@@ -752,7 +752,7 @@ public class ExperimentType {
              */
             public List<ExperimentType.MzData.SpectrumList.Spectrum> getSpectrum() {
                 if (spectrum == null) {
-                    spectrum = new ArrayList<ExperimentType.MzData.SpectrumList.Spectrum>();
+                    spectrum = new ArrayList<>();
                 }
                 return this.spectrum;
             }
@@ -953,7 +953,7 @@ public class ExperimentType {
              */
             public List<ParamType> getStepDescription() {
                 if (stepDescription == null) {
-                    stepDescription = new ArrayList<ParamType>();
+                    stepDescription = new ArrayList<>();
                 }
                 return this.stepDescription;
             }
